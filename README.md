@@ -37,5 +37,22 @@ qiitaのtokenはうまく使えなかった401が帰ってきてしまう...
 storeは自動反映されないので書き換えたらもう一度ビルドする必要あり  
 
 storeはredirectされた時に毎回新しく取得される,cacheされているときは変わらない  
+そのため以下のようになる
 
- 
+```Javascript
+// pages/index.vue
+async asyncData({ store }) {
+  // store.getters.items.lengthは0となる
+  if (store.getters.items.length) {
+    return ;
+  }
+  ..
+},
+// pages/users/_id.vue
+async asyncData({ route, store, redirect }) {
+  // store.getters['users'][route.params.id]はundefinedとなる
+  if (store.getters['users'][route.params.id]) {
+    return ;
+  ..
+},
+```
