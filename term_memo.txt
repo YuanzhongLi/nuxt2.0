@@ -1,0 +1,2 @@
+・favicon.ico ページの上にあるアイコンのこと
+・robots.txt crawlerのアクセスを設定する
