@@ -6,6 +6,11 @@ module.exports = {
   /*
   ** Headers of the page
   */
+  router: {
+    middleware: [
+      'auth',
+    ]
+  },
   head: {
     title: 'my-first-nuxt-app',
     /*
@@ -32,7 +37,8 @@ module.exports = {
 
   },
   plugins: [
-    '~/plugins/axios.js'
+    '~/plugins/axios.js',
+    '~/plugins/logger',
   ],
   env: {
     QIITA_TOKEN: process.env.QIITA_TOKEN,
